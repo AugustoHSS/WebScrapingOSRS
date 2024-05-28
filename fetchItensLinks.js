@@ -4,7 +4,6 @@ const fs = require('fs');
 
 const baseUrl = 'https://oldschool.runescape.wiki';
 const itemCategoryUrl = `${baseUrl}/w/Category:Equipable_items`;
-
 const allItemLinks = [];
 
 async function fetchAllItems(currentPageUrl = itemCategoryUrl) {
@@ -30,7 +29,7 @@ async function fetchAllItems(currentPageUrl = itemCategoryUrl) {
 }
 
 fetchAllItems().then(() => {
-  const fileContent = allItemLinks.join('\n');
-  fs.writeFileSync('item_links.txt', fileContent, 'utf8');
-  console.log('Item links saved to item_links.txt');
+  const outputFilePath = allItemLinks.join('\n');
+  fs.writeFileSync('item_links.txt', outputFilePath, 'utf8');
+  console.log(`Item links saved to ${outputFilePath}`);
 });
